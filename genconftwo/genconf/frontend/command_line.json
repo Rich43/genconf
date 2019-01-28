@@ -1,0 +1,466 @@
+[
+    [
+        [
+            "-c", 
+            "--conf-file"
+        ], 
+        {
+            "action": "store", 
+            "default": "config.ini", 
+            "help": "INI file with various configuration. Defaults to file \"config.ini\" in current directory."
+        }
+    ], 
+    [
+        [
+            "-j", 
+            "--json-file"
+        ], 
+        {
+            "action": "store", 
+            "default": "database.json", 
+            "help": "JSON database file with accounts and domains. Defaults to file \"database.json\" in current directory."
+        }
+    ], 
+    [
+        [
+            "-o", 
+            "--output-folder"
+        ], 
+        {
+            "action": "store", 
+            "default": "output", 
+            "help": "Folder to output generated files to. The folder will be created if missing. Defaults to folder \"output\" in current directory."
+        }
+    ], 
+    [
+        [
+            "-d", 
+            "--delete-output-folder"
+        ], 
+        {
+            "action": "store_true", 
+            "help": "Remove all files and folders in output folder first."
+        }
+    ], 
+    [
+     [
+         "-pv", 
+         "--generate-paster-virtual-hosts"
+     ], 
+     {
+         "action": "store_true", 
+         "help": "PYTHON: Generate a paster virtual host INI file."
+     }
+    ], 
+    [
+        [
+            "-z", 
+            "--generate-zonefiles"
+        ], 
+        {
+            "action": "store_true",  
+            "help": "DNS: Generate zone files for bind and nsd."
+        }
+    ], 
+    [
+        [
+            "-n", 
+            "--generate-nginx"
+        ], 
+        {
+            "action": "store_true",  
+            "help": "WEB: Generate virtual hosts and other nginx configuration."
+        }
+    ], 
+    [
+        [
+            "-sw", 
+            "--generate-web-ssl"
+        ], 
+        {
+            "action": "store_true",  
+            "help": "SSL: Generate SSL certificates for HTTPS."
+        }
+    ], 
+    [
+        [
+            "-sm", 
+            "--generate-mail-ssl"
+        ], 
+        {
+            "action": "store_true",  
+            "help": "SSL: Generate SSL certificates for mail."
+        }
+    ], 
+    [
+        [
+            "-p", 
+            "--generate-postfix"
+        ], 
+        {
+            "action": "store_true",  
+            "help": "MAIL: Generate Postfix configuration files."
+        }
+    ], 
+    [
+        [
+            "-a", 
+            "--generate-accounts"
+        ], 
+        {
+            "action": "store_true",  
+            "help": "COMMANDS: Generate helpful bash scripts for managing accounts."
+        }
+    ], 
+    [
+        [
+            "-aa", 
+            "--add-account"
+        ], 
+        {
+            "action": "store", 
+            "metavar": "USERNAME",
+            "help": "COMMANDS: Add a unix account."
+        }
+    ], 
+    [
+        [
+            "-da", 
+            "--delete-account"
+        ], 
+        {
+            "action": "store", 
+            "metavar": "USERNAME",
+            "help": "COMMANDS: Delete a unix account."
+        }
+    ], 
+    [
+        [
+            "-cad", 
+            "--config-add-domain"
+        ], 
+        {
+            "action": "store", 
+            "metavar": "DOMAIN",
+            "help": "CONFIG: Add a domain to JSON database."
+        }
+    ],  
+    [
+        [
+            "-cdd", 
+            "--config-delete-domain"
+        ], 
+        {
+            "action": "store", 
+            "metavar": "DOMAIN",
+            "help": "CONFIG: Delete a domain from JSON database."
+        }
+    ],  
+    [
+        [
+            "-as", 
+            "--config-add-sub-domain"
+        ], 
+        {
+            "action": "store", 
+            "metavar": ["DOMAIN", "SUBDOMAIN"],
+            "nargs": 2,
+            "help": "COMMANDS: Add a unix account."
+        }
+    ],  
+    [
+        [
+            "-ds", 
+            "--config-delete-sub-domain"
+        ], 
+        {
+            "action": "store", 
+            "metavar": ["DOMAIN", "SUBDOMAIN"],
+            "nargs": 2,
+            "help": "CONFIG: Delete a sub-domain from JSON database."
+        }
+    ],  
+    [
+        [
+            "-cau", 
+            "--config-add-user"
+        ], 
+        {
+            "action": "store", 
+            "metavar": ["USERNAME", "DOMAIN"],
+            "nargs": 2,
+            "help": "CONFIG: Add a user to JSON database."
+        }
+    ],  
+    [
+        [
+            "-cdu", 
+            "--config-delete-user"
+        ], 
+        {
+            "action": "store", 
+            "metavar": "USERNAME",
+            "help": "CONFIG: Delete a user from JSON database."
+        }
+    ],  
+    [
+        [
+            "-uc", 
+            "--config-user-config"
+        ], 
+        {
+            "action": "store", 
+            "metavar": "USERNAME",
+            "help": "CONFIG: Get configuration information about a user."
+        }
+    ],  
+    [
+        [
+            "-uf", 
+            "--config-update-fullname"
+        ], 
+        {
+            "action": "store", 
+            "metavar": ["USERNAME", "FULLNAME"],
+            "nargs": 2,
+            "help": "CONFIG: Change a users full name."
+        }
+    ],  
+    [
+        [
+            "-ud", 
+            "--config-update-domain"
+        ], 
+        {
+            "action": "store", 
+            "metavar": ["USERNAME", "DOMAIN"],
+            "nargs": 2,
+            "help": "CONFIG: Change a users domain."
+        }
+    ],  
+    [
+        [
+            "-ue", 
+            "--config-update-email"
+        ], 
+        {
+            "action": "store", 
+            "metavar": ["USERNAME", "EMAIL"],
+            "nargs": 2,
+            "help": "CONFIG: Change a users email."
+        }
+    ],  
+    [
+        [
+            "-uw", 
+            "--config-update-wsgi-module"
+        ], 
+        {
+            "action": "store", 
+            "metavar": ["USERNAME", "MODULENAME"],
+            "nargs": 2,
+            "help": "CONFIG: Change a users python module name for WSGI."
+        }
+    ],  
+    [
+        [
+            "-up", 
+            "--config-update-proxy-port"
+        ], 
+        {
+            "action": "store", 
+            "metavar": ["USERNAME", "PORT"],
+            "nargs": 2,
+            "help": "CONFIG: Change a users proxy port."
+        }
+    ],  
+    [
+        [
+            "-ep", 
+            "--config-enable-php"
+        ], 
+        {
+            "action": "store", 
+            "metavar": "USERNAME",
+            "help": "CONFIG: Enable PHP support for a user."
+        }
+    ], 
+    [
+        [
+            "-dp", 
+            "--config-disable-php"
+        ], 
+        {
+            "action": "store", 
+            "metavar": "USERNAME",
+            "help": "CONFIG: Disable PHP support for a user."
+        }
+    ],  
+    [
+        [
+            "-ex", 
+            "--config-enable-proxy"
+        ], 
+        {
+            "action": "store", 
+            "metavar": "USERNAME",
+            "help": "CONFIG: Enable Proxy support for a user."
+        }
+    ], 
+    [
+        [
+            "-dx", 
+            "--config-disable-proxy"
+        ], 
+        {
+            "action": "store", 
+            "metavar": "USERNAME",
+            "help": "CONFIG: Disable Proxy support for a user."
+        }
+    ],  
+    [
+        [
+            "-ew", 
+            "--config-enable-wsgi"
+        ], 
+        {
+            "action": "store", 
+            "metavar": "USERNAME",
+            "help": "CONFIG: Enable WSGI support for a user."
+        }
+    ], 
+    [
+        [
+            "-dw", 
+            "--config-disable-wsgi"
+        ], 
+        {
+            "action": "store", 
+            "metavar": "USERNAME",
+            "help": "CONFIG: Disable WSGI support for a user."
+        }
+    ], 
+    [
+        [
+            "-cl", 
+            "--config-list-users"
+        ], 
+        {
+            "action": "store_true", 
+            "help": "CONFIG: List all users in JSON database."
+        }
+    ], 
+    [
+        [
+            "-cd", 
+            "--config-list-domains"
+        ], 
+        {
+            "action": "store_true", 
+            "help": "CONFIG: List all domains in JSON database."
+        }
+    ], 
+    [
+        [
+            "-cs", 
+            "--config-list-sub-domains"
+        ], 
+        {
+            "action": "store",
+            "metavar": "DOMAIN", 
+            "help": "CONFIG: List all sub-domains in DOMAIN from JSON database."
+        }
+    ], 
+    [
+        [
+            "-dl", 
+            "--database-list-drivers"
+        ], 
+        {
+            "action": "store_true",  
+            "help": "DATABASE: List supported database drivers, pass one of these into the database commands."
+        }
+    ],  
+    [
+        [
+            "-au", 
+            "--database-add-user"
+        ], 
+        {
+            "action": "store", 
+            "metavar": ["DRIVER", "USERNAME"],
+            "nargs": 2,
+            "help": "DATABASE: Add a database user."
+        }
+    ], 
+    [
+        [
+            "-du", 
+            "--database-delete-user"
+        ], 
+        {
+            "action": "store", 
+            "metavar": ["DRIVER", "USERNAME"],
+            "nargs": 2,
+            "help": "DATABASE: Delete a database user."
+        }
+    ], 
+    [
+        [
+            "-ad", 
+            "--database-add-database"
+        ], 
+        {
+            "action": "store", 
+            "metavar": ["DRIVER", "DATABASE"],
+            "nargs": 2,
+            "help": "DATABASE: Add a database user."
+        }
+    ], 
+    [
+        [
+            "-dd", 
+            "--database-delete-database"
+        ], 
+        {
+            "action": "store", 
+            "metavar": ["DRIVER", "DATABASE"],
+            "nargs": 2,
+            "help": "DATABASE: Delete a database user."
+        }
+    ], 
+    [
+        [
+            "-dt", 
+            "--database-user-to-database"
+        ], 
+        {
+            "action": "store", 
+            "metavar": ["DRIVER", "USERNAME", "DATABASE"],
+            "nargs": 3,
+            "help": "DATABASE: Associate a user with a database."
+        }
+    ], 
+    [
+        [
+            "-lu", 
+            "--database-list-users"
+        ], 
+        {
+            "action": "store", 
+            "metavar": "DRIVER",
+            "help": "DATABASE: List users."
+        }
+    ], 
+    [
+        [
+            "-ld", 
+            "--database-list-databases"
+        ], 
+        {
+            "action": "store", 
+            "metavar": "DRIVER",
+            "help": "DATABASE: List databases."
+        }
+    ]
+]
