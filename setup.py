@@ -11,6 +11,6 @@ setup(name='genconf',
       author='Richie Ward',
       author_email='RichieS@GMail.com',
       url='http://pynguins.com/',
-      packages=['genconf'],
+      packages=find_packages(),
       install_requires=requires
 )
