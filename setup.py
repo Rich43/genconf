@@ -13,5 +13,6 @@ setup(name='genconf',
       url='http://pynguins.com/',
       packages=find_packages(),
       install_requires=requires,
-      scripts=['genconf_cli.py']
+      scripts=['genconf_cli.py'],
+      package_data={'genconf': ['*.jinja2']}
 )
