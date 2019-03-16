@@ -14,5 +14,5 @@ setup(name='genconf',
       packages=find_packages(),
       install_requires=requires,
       scripts=['genconf_cli.py'],
-      package_data={'genconf': ['*.jinja2']}
+      package_data={'': ['*.jinja2']}
 )
